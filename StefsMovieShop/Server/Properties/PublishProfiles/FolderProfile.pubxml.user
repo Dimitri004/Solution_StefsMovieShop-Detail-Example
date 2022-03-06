@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Publish-StefsMovieShop-s2005</_PublishTargetUrl>
+    <History>True|2022-02-18T10:40:06.5920937Z;True|2022-02-18T11:24:22.9607702+01:00;True|2022-02-18T11:19:10.1724037+01:00;True|2022-02-17T13:56:52.7989709+01:00;True|2022-01-25T19:42:31.2267347+01:00;</History>
+  </PropertyGroup>
+</Project>

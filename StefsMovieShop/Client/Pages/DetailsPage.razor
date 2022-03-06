@@ -1,0 +1,54 @@
+﻿@page "/DetailsPage/{id:int}"
+@inject IMoviesRepo moviesRepo
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<h3>DetailsPage</h3>
+
+<div class="w-[700px] mt-4">
+
+    <div class="flex flex-col my-2 border-b">
+        <div class="font-bold">TmdbId:</div>
+        <div>@movie.TmdbId</div>
+    </div>
+
+    <div class="flex flex-col my-2 border-b">
+        <div class="font-bold">Title:</div>
+        <div>@movie.Title</div>
+    </div>
+
+    <div class="flex flex-col my-2 border-b">
+        <div class="font-bold">Overview:</div>
+        <div>@movie.Overview</div>
+    </div>
+
+    <div class="flex flex-col my-2 border-b">
+        <div class="font-bold">Tagline:</div>
+        <div>@movie.Tagline</div>
+    </div>
+
+</div>
+
+
+@code {
+    //fields
+    MovieDto movie = new MovieDto();
+
+    //parameters
+    [Parameter]
+    public int Id { get; set; }
+
+    //lcm
+    protected async override Task OnInitializedAsync()
+    {
+        if (Id == 0) return;
+        try
+        {
+            movie = await moviesRepo.GetMovie(Id);
+            StateHasChanged();
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿@page "/MovieByIdPage"
+@inject IMoviesRepo movieRepo
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<h3>MovieById</h3>
+<hr />
+@info
+<hr />
+
+<div>
+    <b>Geef Url:</b>
+    <input class="w-50" @bind="id" />
+    <button class="btn btn-primary" @onclick="GetData">
+        Get Data
+    </button>
+</div>
+<hr />
+
+@if (movie != null)
+{
+    <div>@movie.Id</div>
+    <div>@movie.Title</div>
+    <div>@movie.Overview</div>
+    <div>@movie.Tagline</div>
+}
+
+@code
+{
+    //field
+    string info = "info";
+    int id = 1;
+    MovieDto movie;
+
+    public async void GetData()
+    {
+        try
+        {
+            movie = await movieRepo.GetMovie(id);
+            StateHasChanged();
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception ex)
+        {
+            info = ex.Message;
+        }
+    }
+}

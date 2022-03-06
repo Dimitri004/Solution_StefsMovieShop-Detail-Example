@@ -1,0 +1,20 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "RunTailwind": "npx tailwindcss -i ./tailwindin.css -o ./wwwroot/css/tailwindout.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "-vs-binding": {
+    "ProjectOpened": [
+      "RunTailwind"
+    ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}
